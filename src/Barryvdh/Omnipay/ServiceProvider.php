@@ -28,7 +28,7 @@ class ServiceProvider extends \Illuminate\Support\ServiceProvider {
      */
     public function register()
     {
-        $this->app['omnipay.manager'] = $this->app->share(function ($app){
+        $this->app['omnipay'] = $this->app->share(function ($app){
             $defaults = $app['config']->get('laravel-omnipay::defaults', array());
             return new GatewayManager($app, new GatewayFactory, $defaults);
         });
@@ -41,6 +41,6 @@ class ServiceProvider extends \Illuminate\Support\ServiceProvider {
      */
     public function provides()
     {
-        return array('omnipay.manager');
+        return array('omnipay');
     }
 }

@@ -16,6 +16,6 @@ class Facade extends \Illuminate\Support\Facades\Facade {
     /**
      * {@inheritDoc}
      */
-    protected static function getFacadeAccessor() { return 'omnipay.manager'; }
+    protected static function getFacadeAccessor() { return 'omnipay'; }
 
 }
