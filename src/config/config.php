@@ -3,7 +3,7 @@
 return array(
 
     /** The default gateway name */
-    'gateway' => 'My\Gateway',
+    'gateway' => 'PayPal_Express',
 
     /** The default settings, applied to all gateways */
     'defaults' => array(
@@ -12,8 +12,9 @@ return array(
 
     /** Gateway specific parameters */
     'gateways' => array(
-        'My\Gateway' => array(
-
+        'PayPal_Express' => array(
+            'username' => '',
+            'landingPage' => array('billing', 'login'), 
         ),
     ),
 
