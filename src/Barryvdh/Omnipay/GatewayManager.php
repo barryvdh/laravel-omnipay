@@ -35,6 +35,12 @@ class GatewayManager{
         $this->defaults = $defaults;
     }
 
+    /**
+     * Get a gateway
+     *
+     * @param  string  The gateway to retrieve (null=default)
+     * @return \Omnipay\Common\GatewayInterface
+     */
     public function gateway($class = null)
     {
         $class = $class ?: $this->getDefaultGateway();
