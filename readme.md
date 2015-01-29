@@ -1,4 +1,6 @@
-## Omnipay for Laravel 4
+## Omnipay for Laravel 5
+
+### For Laravel 4, use the [0.1 version](https://github.com/barryvdh/laravel-omnipay/tree/v0.1.0).
 
 This is a package to integrate [Omnipay](https://github.com/omnipay/omnipay) with Laravel.
 You can use it to easily manage your configuration, and use the Facade to provide shortcuts to your gateway.
@@ -7,15 +9,15 @@ You can use it to easily manage your configuration, and use the Facade to provid
 
 Require this package in your composer.json and run composer update (or run `composer require barryvdh/laravel-omnipay:0.1.x` directly):
 
-    "barryvdh/laravel-omnipay": "0.1.*"
+    "barryvdh/laravel-omnipay": "0.2.*@dev"
 
-After updating composer, add the ServiceProvider to the providers array in app/config/app.php
+After updating composer, add the ServiceProvider to the providers array in config/app.php
 
     'Barryvdh\Omnipay\ServiceProvider',
 
 You need to publish the config for this package. A sample configuration is provided. The defaults will be merged with gateway specific configuration.
 
-    $ php artisan config:publish barryvdh/laravel-omnipay
+    $ php artisan vendor:publish
 
 To use the Facade (`Omnipay::purchase()` instead of `App::make(`omnipay`)->purchase()`), add that to the facades array.
 

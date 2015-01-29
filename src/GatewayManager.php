@@ -61,7 +61,7 @@ class GatewayManager{
     {
         return array_merge(
             $this->defaults,
-            $this->app['config']->get('laravel-omnipay::gateways.'.$name, array())
+            $this->app['config']->get('omnipay.gateways.'.$name, array())
         );
     }
 
@@ -72,7 +72,7 @@ class GatewayManager{
      */
     public function getDefaultGateway()
     {
-        return $this->app['config']['laravel-omnipay::gateway'];
+        return $this->app['config']['omnipay.gateway'];
     }
 
     /**
@@ -83,7 +83,7 @@ class GatewayManager{
      */
     public function setDefaultGateway($name)
     {
-        $this->app['config']['laravel-omnipay::gateway'] = $name;
+        $this->app['config']['omnipay.gateway'] = $name;
     }
 
     /**

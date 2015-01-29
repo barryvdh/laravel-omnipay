@@ -12,24 +12,17 @@ class ServiceProvider extends \Illuminate\Support\ServiceProvider {
     protected $defer = false;
 
     /**
-     * Bootstrap the application events.
-     *
-     * @return void
-     */
-    public function boot()
-    {
-        $this->app['config']->package('barryvdh/laravel-omnipay', $this->guessPackagePath() . '/config');
-    }
-
-    /**
      * Register the service provider.
      *
      * @return void
      */
     public function register()
     {
+        $configPath = __DIR__ . '/../config/omnipay.php';
+        $this->publishes([$configPath => config_path('omnipay.php')]);
+        
         $this->app['omnipay'] = $this->app->share(function ($app){
-            $defaults = $app['config']->get('laravel-omnipay::defaults', array());
+            $defaults = $app['config']->get('omnipay.defaults', array());
             return new GatewayManager($app, new GatewayFactory, $defaults);
         });
     }
