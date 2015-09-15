@@ -55,4 +55,4 @@ Besides the gateway calls, there is also a shortcut for the creditcard:
         'lastName' => 'Tables',
         'number' => '4111111111111111',
     );
-    $card = Omnipay::CreditCard($formInputData);
+    $card = Omnipay::creditCard($formInputData);
