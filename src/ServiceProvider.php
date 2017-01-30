@@ -21,7 +21,7 @@ class ServiceProvider extends \Illuminate\Support\ServiceProvider {
         $configPath = __DIR__ . '/../config/omnipay.php';
         $this->publishes([$configPath => config_path('omnipay.php')]);
         
-        $this->app['omnipay'] = $this->app->share(function ($app){
+        $this->app['omnipay'] = $this->app->singleton('omnipay',function ($app){
             $defaults = $app['config']->get('omnipay.defaults', array());
             return new GatewayManager($app, new GatewayFactory, $defaults);
         });
