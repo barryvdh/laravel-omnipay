@@ -22,6 +22,14 @@
     "extra": {
         "branch-alias": {
             "dev-master": "0.2-dev"
+        },
+        "laravel": {
+            "providers": [
+                "Barryvdh\\Omnipay\\ServiceProvider"
+            ],
+            "aliases": {
+                "Omnipay": "Barryvdh\\Omnipay\\Facade"
+            }
         }
     },
     "minimum-stability": "dev"
