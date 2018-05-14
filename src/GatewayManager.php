@@ -47,7 +47,7 @@ class GatewayManager{
 
         if(!isset($this->gateways[$class])){
             $gateway = $this->factory->create($class, null, $this->app['request']);
-            $gateway->initialize($this->getConfig($gateway->getName()));
+            $gateway->initialize($this->getConfig($class));
             $this->gateways[$class] = $gateway;
         }
 
