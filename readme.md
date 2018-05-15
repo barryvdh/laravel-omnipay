@@ -5,7 +5,7 @@ You can use it to easily manage your configuration, and use the Facade to provid
 
 ## Installation
 
-Require this package in your composer.json and run composer update (or run `composer require barryvdh/laravel-omnipay:0.2.x` directly):
+Require this package in your composer.json and run composer update (or run `composer require barryvdh/laravel-omnipay:0.3.x` directly):
 
     "barryvdh/laravel-omnipay": "0.3.*@dev"
 
