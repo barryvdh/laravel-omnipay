@@ -1,4 +1,7 @@
-/vendor
-composer.phar
+build
 composer.lock
-.DS_Store
+docs
+vendor
+coverage
+.phpunit.result.cache
+.php_cs.cache

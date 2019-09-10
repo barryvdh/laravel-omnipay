@@ -1,35 +1,59 @@
 {
-    "name": "barryvdh/laravel-omnipay",
+    "name": "dansmaculotte/laravel-omnipay",
     "description": "Omnipay Service Provider for Laravel",
-    "keywords": ["laravel", "omnipay"],
+    "keywords": [
+        "laravel",
+        "omnipay"
+    ],
     "license": "MIT",
     "authors": [
         {
             "name": "Barry vd. Heuvel",
             "email": "barryvdh@gmail.com"
+        },
+        {
+            "name": "Gaël Reyrol",
+            "email": "gael@dansmaculotte.fr"
         }
     ],
     "require": {
-        "illuminate/support": "^5",
-        "league/omnipay": "~3.0"
+        "php": "^7.2",
+        "illuminate/support": "^5.8|^6.0",
+        "league/omnipay": "^3.0"
+    },
+    "require-dev": {
+        "friendsofphp/php-cs-fixer": "^2.15",
+        "larapack/dd": "^1.1",
+        "omnipay/dummy": "^3.0",
+        "orchestra/testbench": "^3.8|^4.0",
+        "phpunit/phpunit": "^8.3"
     },
     "autoload": {
         "psr-4": {
-            "Barryvdh\\Omnipay\\": "src/"
+            "DansMaCulotte\\Omnipay\\": "src/"
         }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "DansMaCulotte\\Omnipay\\Tests\\": "tests/"
+        }
+    },
+    "scripts": {
+        "test": "@php vendor/bin/phpunit",
+        "coverage": "@php vendor/bin/phpunit --coverage-html coverage",
+        "format": "@php vendor/bin/php-cs-fixer fix --config .php_cs.php"
+    },
+    "config": {
+        "sort-packages": true
     },
     "extra": {
-        "branch-alias": {
-            "dev-master": "0.3-dev"
-        },
         "laravel": {
             "providers": [
-                "Barryvdh\\Omnipay\\ServiceProvider"
+                "DansMaCulotte\\Omnipay\\OmnipayServiceProvider"
             ],
             "aliases": {
-                "Omnipay": "Barryvdh\\Omnipay\\Facade"
+                "Omnipay": "DansMaCulotte\\Omnipay\\OmnipayFacade"
             }
         }
-    },
-    "minimum-stability": "dev"
+    }
 }
