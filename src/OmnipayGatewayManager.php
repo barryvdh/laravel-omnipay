@@ -20,14 +20,19 @@ class OmnipayGatewayManager
     protected $factory;
 
     /**
+     * The default settings, applied to every gateway
+     */
+    protected $defaults;
+
+    /**
      * The registered gateways
      */
     protected $gateways;
 
     /**
-     * The default settings, applied to every gateway
+     * The default gateway override
      */
-    protected $defaults;
+    protected $gateway;
 
     /**
      * Create a new Gateway manager instance.
@@ -41,17 +46,17 @@ class OmnipayGatewayManager
         $this->app = $app;
         $this->factory = $factory;
         $this->defaults = $defaults;
+        $this->gateway = null;
     }
 
     /**
      * Get a gateway
      *
-     * @param  string  The gateway to retrieve (null=default)
      * @return \Omnipay\Common\GatewayInterface
      */
-    public function gateway($class = null)
+    public function makeGateway()
     {
-        $class = $class ?: $this->getDefaultGateway();
+        $class = $this->gateway ?: $this->getDefaultGateway();
 
         if (!isset($this->gateways[$class])) {
             $gateway = $this->factory->create($class, null, $this->app['request']);
@@ -97,6 +102,17 @@ class OmnipayGatewayManager
     }
 
     /**
+     * @param string $name
+     * @return OmnipayGatewayManager
+     */
+    public function withGateway(string $name)
+    {
+        $this->gateway = $name;
+
+        return $this;
+    }
+
+    /**
      * Dynamically call the default driver instance.
      *
      * @param  string  $method
@@ -105,6 +121,6 @@ class OmnipayGatewayManager
      */
     public function __call($method, $parameters)
     {
-        return call_user_func_array([$this->gateway(), $method], $parameters);
+        return call_user_func_array([$this->makeGateway(), $method], $parameters);
     }
 }

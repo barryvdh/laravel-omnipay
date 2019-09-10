@@ -39,18 +39,30 @@ $params = [
 ];
 $response = Omnipay::purchase($params)->send();
 
-if ($response->isSuccessful() === false) {
-    // payment failed: display message to customer
-    echo $response->getMessage();
-}
-
 if ($response->isRedirect()) {
     // redirect to offsite payment gateway
     return $response->getRedirectResponse();
 }
 
+if ($response->isSuccessful() === false) {
+    // payment failed: display message to customer
+    echo $response->getMessage();
+}
+
 // payment was successful: update database
 print_r($response);
+```
+
+You can change default gateway with :
+
+```php
+OmnipayFacade::setDefaultGateway('Stripe');
+```
+
+Or temporary change gateway :
+
+```php
+Omnipay::withGateway('Dummy')->purchase($params)->send();
 ```
 
 ### Testing
