@@ -1,5 +1,5 @@
 {
-    "name": "barryvdh/laravel-omnipay",
+    "name": "blasttech/laravel-omnipay",
     "description": "Omnipay Service Provider for Laravel",
     "keywords": ["laravel", "omnipay"],
     "license": "MIT",
@@ -19,9 +19,6 @@
         }
     },
     "extra": {
-        "branch-alias": {
-            "dev-master": "0.3-dev"
-        },
         "laravel": {
             "providers": [
                 "Barryvdh\\Omnipay\\ServiceProvider"
@@ -30,6 +27,5 @@
                 "Omnipay": "Barryvdh\\Omnipay\\Facade"
             }
         }
-    },
-    "minimum-stability": "dev"
+    }
 }
