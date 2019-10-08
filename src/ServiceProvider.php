@@ -2,8 +2,8 @@
 
 use Omnipay\Common\GatewayFactory;
 
-class ServiceProvider extends \Illuminate\Support\ServiceProvider {
-
+class ServiceProvider extends \Illuminate\Support\ServiceProvider
+{
     /**
      * Indicates if loading of the provider is deferred.
      *
@@ -20,8 +20,8 @@ class ServiceProvider extends \Illuminate\Support\ServiceProvider {
     {
         $configPath = __DIR__ . '/../config/omnipay.php';
         $this->publishes([$configPath => config_path('omnipay.php')]);
-        
-        $this->app->singleton('omnipay',function ($app){
+
+        $this->app->singleton('omnipay', function ($app) {
             $defaults = $app['config']->get('omnipay.defaults', array());
             return new GatewayManager($app, new GatewayFactory, $defaults);
         });

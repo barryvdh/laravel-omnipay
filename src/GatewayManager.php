@@ -1,13 +1,16 @@
 <?php namespace Barryvdh\Omnipay;
 
+use Illuminate\Contracts\Foundation\Application;
 use Omnipay\Common\GatewayFactory;
+use Omnipay\Common\GatewayInterface;
 
-class GatewayManager{
+class GatewayManager
+{
 
     /**
      * The application instance.
      *
-     * @var \Illuminate\Foundation\Application
+     * @var Application
      */
     protected $app;
 
@@ -24,9 +27,9 @@ class GatewayManager{
     /**
      * Create a new Gateway manager instance.
      *
-     * @param  \Illuminate\Foundation\Application $app
-     * @param  \Omnipay\Common\GatewayFactory $factory
-     * @param  array
+     * @param Application $app
+     * @param GatewayFactory $factory
+     * @param array
      */
     public function __construct($app, GatewayFactory $factory, $defaults = array())
     {
@@ -36,33 +39,45 @@ class GatewayManager{
     }
 
     /**
+     * Set the default gateway name.
+     *
+     * @param string $name
+     * @return void
+     */
+    public function setDefaultGateway($name)
+    {
+        $this->app['config']['omnipay.gateway'] = $name;
+    }
+
+    /**
+     * Dynamically call the default driver instance.
+     *
+     * @param string $method
+     * @param array $parameters
+     * @return mixed
+     */
+    public function __call($method, $parameters)
+    {
+        return call_user_func_array(array($this->gateway(), $method), $parameters);
+    }
+
+    /**
      * Get a gateway
      *
-     * @param  string  The gateway to retrieve (null=default)
-     * @return \Omnipay\Common\GatewayInterface
+     * @param string  The gateway to retrieve (null=default)
+     * @return GatewayInterface
      */
     public function gateway($class = null)
     {
         $class = $class ?: $this->getDefaultGateway();
 
-        if(!isset($this->gateways[$class])){
+        if (!isset($this->gateways[$class])) {
             $gateway = $this->factory->create($class, null, $this->app['request']);
             $gateway->initialize($this->getConfig($class));
             $this->gateways[$class] = $gateway;
         }
 
         return $this->gateways[$class];
-    }
-
-    /**
-     * Get the configuration, based on the config and the defaults.
-     */
-    protected function getConfig($name)
-    {
-        return array_merge(
-            $this->defaults,
-            $this->app['config']->get('omnipay.gateways.'.$name, array())
-        );
     }
 
     /**
@@ -76,26 +91,13 @@ class GatewayManager{
     }
 
     /**
-     * Set the default gateway name.
-     *
-     * @param  string  $name
-     * @return void
+     * Get the configuration, based on the config and the defaults.
      */
-    public function setDefaultGateway($name)
+    protected function getConfig($name)
     {
-        $this->app['config']['omnipay.gateway'] = $name;
+        return array_merge(
+            $this->defaults,
+            $this->app['config']->get('omnipay.gateways.' . $name, array())
+        );
     }
-
-    /**
-     * Dynamically call the default driver instance.
-     *
-     * @param  string  $method
-     * @param  array   $parameters
-     * @return mixed
-     */
-    public function __call($method, $parameters)
-    {
-        return call_user_func_array(array($this->gateway(), $method), $parameters);
-    }
-
 }
