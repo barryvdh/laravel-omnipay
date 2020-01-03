@@ -2,8 +2,8 @@
 
 use Omnipay\Common\GatewayFactory;
 
-class GatewayManager{
-
+class GatewayManager
+{
     /**
      * The application instance.
      *
@@ -45,7 +45,7 @@ class GatewayManager{
     {
         $class = $class ?: $this->getDefaultGateway();
 
-        if(!isset($this->gateways[$class])){
+        if (!isset($this->gateways[$class])) {
             $gateway = $this->factory->create($class, null, $this->app['request']);
             $gateway->initialize($this->getConfig($class));
             $this->gateways[$class] = $gateway;
@@ -61,7 +61,7 @@ class GatewayManager{
     {
         return array_merge(
             $this->defaults,
-            $this->app['config']->get('omnipay.gateways.'.$name, array())
+            $this->app['config']->get('omnipay.gateways.'.$name, [])
         );
     }
 
@@ -95,7 +95,6 @@ class GatewayManager{
      */
     public function __call($method, $parameters)
     {
-        return call_user_func_array(array($this->gateway(), $method), $parameters);
+        return call_user_func_array([$this->gateway(), $method], $parameters);
     }
-
 }

@@ -2,8 +2,8 @@
 
 use Omnipay\Common\CreditCard;
 
-class Facade extends \Illuminate\Support\Facades\Facade {
-
+class Facade extends \Illuminate\Support\Facades\Facade
+{
     /**
      * @param  array  $parameters
      * @return CreditCard
@@ -16,6 +16,8 @@ class Facade extends \Illuminate\Support\Facades\Facade {
     /**
      * {@inheritDoc}
      */
-    protected static function getFacadeAccessor() { return 'omnipay'; }
-
+    protected static function getFacadeAccessor()
+    {
+        return 'omnipay';
+    }
 }
