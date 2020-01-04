@@ -5,10 +5,10 @@ You can use it to easily manage your configuration, and use the Facade to provid
 
 ## Installation
 
-Require this package in your composer.json and run composer update (or run `composer require barryvdh/laravel-omnipay` directly):
+Require this package with composer.
 
-```php
-"barryvdh/laravel-omnipay": "0.3.*"
+```
+$ composer require barryvdh/laravel-omnipay
 ```
     
 Pre Laravel 5.5: After updating composer, add the ServiceProvider to the providers array in config/app.php
