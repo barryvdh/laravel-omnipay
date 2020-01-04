@@ -1,21 +1,42 @@
 <?php
 
-return array(
+return [
 
-    /** The default gateway name */
-    'gateway' => 'PayPal_Express',
+    /*
+    |--------------------------------------------------------------------------
+    | Default Gateway
+    |--------------------------------------------------------------------------
+    |
+    | Here you can specify the gateway that the facade should use by default.
+    |
+    */
+    'gateway' => env('OMNIPAY_GATEWAY', 'PayPal_Express'),
 
-    /** The default settings, applied to all gateways */
-    'defaults' => array(
-        'testMode' => false,
-    ),
+    /*
+    |--------------------------------------------------------------------------
+    | Default settings
+    |--------------------------------------------------------------------------
+    |
+    | Here you can specify default settings for gateways.
+    |
+    */
+    'defaults' => [
+        'testMode' => env('OMNIPAY_TESTMODE', false),
+    ],
 
-    /** Gateway specific parameters */
-    'gateways' => array(
-        'PayPal_Express' => array(
-            'username' => '',
-            'landingPage' => array('billing', 'login'), 
-        ),
-    ),
+    /*
+    |--------------------------------------------------------------------------
+    | Gateway specific settings
+    |--------------------------------------------------------------------------
+    |
+    | Here you can specify gateway specific settings.
+    |
+    */
+    'gateways' => [
+        'PayPal_Express' => [
+            'username' => env('OMNIPAY_PAYPAL_USERNAME'),
+            'landingPage' => ['billing', 'login'],
+        ],
+    ],
 
-);
+];
