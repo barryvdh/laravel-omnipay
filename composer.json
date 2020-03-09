@@ -10,7 +10,7 @@
         }
     ],
     "require": {
-        "illuminate/support": "^5|^6.0",
+        "illuminate/support": "^5|^6|^7",
         "league/omnipay": "~3.0"
     },
     "autoload": {
