@@ -26,7 +26,7 @@
         "larapack/dd": "^1.1",
         "omnipay/dummy": "^3.0",
         "orchestra/testbench": "^4.0||^5.0",
-        "phpunit/phpunit": "^9.1"
+        "phpunit/phpunit": "^8.5||^9.1"
     },
     "autoload": {
         "psr-4": {
