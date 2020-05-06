@@ -23,7 +23,7 @@ class OmnipayFacadeTest extends TestCase
             'firstName' => 'John',
             'lastName' => 'Snow',
             'number' => '4242424242424242',
-            'expiryMonth' => '01',
+            'expiryMonth' => '10',
             'expiryYear' => '2020',
             'cvv' => '123',
         ]);
@@ -48,7 +48,7 @@ class OmnipayFacadeTest extends TestCase
             'firstName' => 'John',
             'lastName' => 'Snow',
             'number' => '4242424242424242',
-            'expiryMonth' => '01',
+            'expiryMonth' => '10',
             'expiryYear' => '2020',
             'cvv' => '123',
         ]);
@@ -72,7 +72,7 @@ class OmnipayFacadeTest extends TestCase
             'firstName' => 'John',
             'lastName' => 'Snow',
             'number' => '4111111111111111',
-            'expiryMonth' => '01',
+            'expiryMonth' => '10',
             'expiryYear' => '2020',
             'cvv' => '123',
         ]);
