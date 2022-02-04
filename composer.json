@@ -1,7 +1,10 @@
 {
     "name": "barryvdh/laravel-omnipay",
     "description": "Omnipay Service Provider for Laravel",
-    "keywords": ["laravel", "omnipay"],
+    "keywords": [
+        "laravel",
+        "omnipay"
+    ],
     "license": "MIT",
     "authors": [
         {
@@ -10,7 +13,7 @@
         }
     ],
     "require": {
-        "illuminate/support": "^5|^6|^7|^8",
+        "illuminate/support": "^5|^6|^7|^8|^9.0",
         "league/omnipay": "~3.0"
     },
     "autoload": {
