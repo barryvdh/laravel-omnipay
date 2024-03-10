@@ -20,6 +20,7 @@ Pre Laravel 5.5: After updating composer, add the ServiceProvider to the provide
 You need to publish the config for this package. A sample configuration is provided. The defaults will be merged with gateway specific configuration.
 
 ```
+
 $ php artisan vendor:publish --provider=Barryvdh\Omnipay\ServiceProvider
 ```
 
