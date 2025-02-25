@@ -13,7 +13,8 @@
         }
     ],
     "require": {
-        "illuminate/support": "^5|^6|^7|^8|^9|^10|^11",
+        "php": "^8.1",
+        "illuminate/support": "^9|^10|^11|^12",
         "league/omnipay": "~3.0"
     },
     "autoload": {
