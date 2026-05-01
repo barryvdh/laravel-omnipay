@@ -1,7 +1,12 @@
 <?php namespace Barryvdh\Omnipay;
 
 use Omnipay\Common\CreditCard;
+use Omnipay\Common\Message\AbstractRequest;
 
+/**
+ * @method static AbstractRequest purchase(array $options = [])
+ * @method static AbstractRequest completePurchase(array $options = [])
+ */
 class Facade extends \Illuminate\Support\Facades\Facade
 {
     /**
